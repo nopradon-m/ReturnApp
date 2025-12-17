@@ -1,0 +1,107 @@
+# ************************************************************************************************
+# Warning: YAML source code for Canvas Apps should only be used to review changes made within Power Apps Studio and for minor edits (Preview).
+# Use the maker portal to create and edit your Power Apps.
+# 
+# The schema file for Canvas Apps is available at https://go.microsoft.com/fwlink/?linkid=2304907
+# 
+# For more information, visit https://go.microsoft.com/fwlink/?linkid=2292623
+# ************************************************************************************************
+Screens:
+  DispatcherScreen:
+    Properties:
+      LoadingSpinnerColor: =RGBA(56, 96, 178, 1)
+      OnVisible: |+
+        =UpdateContext({ var_showLoader: true });
+
+        // 1. เก็บค่า ID จาก URL
+        Set(accountId, Param("accountId"));
+
+        // 2. ดึงข้อมูลรายการนั้นมาเก็บไว้ในตัวแปร varItem ทันที
+        Set(varItem, LookUp(claimRequest, ID = Value(accountId)));
+
+        // 3. ตรวจสอบและเลือกหน้าที่จะไป
+        If(
+            IsBlank(varItem),
+            // กรณีหาไม่เจอ ให้แจ้งเตือนและกลับหน้าแรก
+            //Notify("ไม่พบข้อมูลรายการนี้ หรือคุณไม่มีสิทธิ์เข้าถึง", NotificationType.Error); 
+            Select(homeCheck),
+
+            // กรณีเจอข้อมูล ให้เช็คเงื่อนไข typeRequest
+            If(
+                varItem.typeRequest.Value = "Claim",
+                Select(viewCheck),        // ถ้าเป็น Claim ไปหน้า ViewScreen
+                Select(returnCheck)   // ถ้าไม่ใช่ ไปหน้า ReturnViewScreen (หรือ Sales Return)
+            )
+        );
+
+        UpdateContext({ var_showLoader: false });
+    Children:
+      - Spinner1:
+          Control: Spinner@1.4.6
+          Properties:
+            Appearance: ='Spinner.Appearance'.Primary
+            BasePaletteColor: =RGBA(168, 110, 235, 1)
+            FontSize: =50
+            FontWeight: =FontWeight.Bold
+            Height: =416
+            Label: ="Loading"
+            LabelPosition: ='Spinner.LabelPosition'.Below
+            SpinnerSize: ='Spinner.SpinnerSize'.Huge
+            Visible: =var_showLoader
+            Width: =694
+            X: =318
+            Y: =159
+      - viewCheck:
+          Control: Classic/Button@2.2.0
+          Properties:
+            BorderColor: =ColorFade(Self.Fill, -15%)
+            Color: =RGBA(255, 255, 255, 1)
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            Fill: =RGBA(56, 96, 178, 1)
+            Font: =Font.'Open Sans'
+            HoverBorderColor: =ColorFade(Self.BorderColor, 20%)
+            HoverColor: =RGBA(255, 255, 255, 1)
+            HoverFill: =ColorFade(RGBA(56, 96, 178, 1), -20%)
+            OnSelect: =Navigate(ViewScreen);
+            PressedBorderColor: =Self.Fill
+            PressedColor: =Self.Fill
+            PressedFill: =Self.Color
+            Visible: =false
+            X: =450
+            Y: =600
+      - returnCheck:
+          Control: Classic/Button@2.2.0
+          Properties:
+            BorderColor: =ColorFade(Self.Fill, -15%)
+            Color: =RGBA(255, 255, 255, 1)
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            Fill: =RGBA(56, 96, 178, 1)
+            Font: =Font.'Open Sans'
+            HoverBorderColor: =ColorFade(Self.BorderColor, 20%)
+            HoverColor: =RGBA(255, 255, 255, 1)
+            HoverFill: =ColorFade(RGBA(56, 96, 178, 1), -20%)
+            OnSelect: =Navigate(ReturnViewScreen);
+            PressedBorderColor: =Self.Fill
+            PressedColor: =Self.Fill
+            PressedFill: =Self.Color
+            Visible: =false
+            X: =958
+            Y: =600
+      - homeCheck:
+          Control: Classic/Button@2.2.0
+          Properties:
+            BorderColor: =ColorFade(Self.Fill, -15%)
+            Color: =RGBA(255, 255, 255, 1)
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            Fill: =RGBA(56, 96, 178, 1)
+            Font: =Font.'Open Sans'
+            HoverBorderColor: =ColorFade(Self.BorderColor, 20%)
+            HoverColor: =RGBA(255, 255, 255, 1)
+            HoverFill: =ColorFade(RGBA(56, 96, 178, 1), -20%)
+            OnSelect: =Navigate(HomeScreen);
+            PressedBorderColor: =Self.Fill
+            PressedColor: =Self.Fill
+            PressedFill: =Self.Color
+            Visible: =false
+            X: =978
+            Y: =620

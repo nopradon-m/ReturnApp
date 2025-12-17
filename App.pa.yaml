@@ -1,0 +1,35 @@
+# ************************************************************************************************
+# Warning: YAML source code for Canvas Apps should only be used to review changes made within Power Apps Studio and for minor edits (Preview).
+# Use the maker portal to create and edit your Power Apps.
+# 
+# The schema file for Canvas Apps is available at https://go.microsoft.com/fwlink/?linkid=2304907
+# 
+# For more information, visit https://go.microsoft.com/fwlink/?linkid=2292623
+# ************************************************************************************************
+App:
+  Properties:
+    BackEnabled: =false
+    OnStart: |-
+      =// เก็บค่า accountId ลงตัวแปร ถ้ามีส่งมา
+      If(
+          !IsBlank(Param("accountId")),
+          DispatcherScreen,
+          HomeScreen
+      );
+
+      ClearCollect(ItemCollections,
+      { Brand:"",
+        MPN:"",
+        Description:"",
+        qty:0,
+        Unit:"",
+        Amount:0
+      }
+      );
+
+      Set(varPasswordCharacters,["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z","1","2","3","4","5","6","7","8","9","0"]);
+
+      Set(currentPage, 1);
+      Set(linePrint,0);
+    StartScreen: "=If(\r\n    // เช็คว่ามี Parameter ส่งมาไหม\r\n    !IsBlank(Param(\"accountId\")),\r\n    \r\n    // ถ้ามี Param -> ให้ LookUp เพื่อดูว่าจะไปหน้าไหน\r\n    If(\r\n        LookUp(claimRequest, ID = Value(Param(\"accountId\")), typeRequest.Value) = \"Claim\",\r\n        ViewScreen,        // ถ้าเงื่อนไขจริง ส่งคืนค่าเป็นหน้า ViewScreen\r\n        ReturnViewScreen   // ถ้าเท็จ ส่งคืนค่าเป็นหน้า ReturnViewScreen\r\n    ),\r\n    \r\n    // ถ้าไม่มี Param -> ส่งคืนค่าเป็นหน้า HomeScreen\r\n    HomeScreen\r\n)"
+    Theme: =PowerAppsTheme
