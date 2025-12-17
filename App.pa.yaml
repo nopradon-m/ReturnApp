@@ -6,17 +6,12 @@
 # 
 # For more information, visit https://go.microsoft.com/fwlink/?linkid=2292623
 # ************************************************************************************************
+
 App:
   Properties:
     BackEnabled: =false
     OnStart: |-
-      =// เก็บค่า accountId ลงตัวแปร ถ้ามีส่งมา
-      If(
-          !IsBlank(Param("accountId")),
-          DispatcherScreen,
-          HomeScreen
-      );
-
+      =
       ClearCollect(ItemCollections,
       { Brand:"",
         MPN:"",
@@ -31,5 +26,10 @@ App:
 
       Set(currentPage, 1);
       Set(linePrint,0);
-    StartScreen: "=If(\r\n    // เช็คว่ามี Parameter ส่งมาไหม\r\n    !IsBlank(Param(\"accountId\")),\r\n    \r\n    // ถ้ามี Param -> ให้ LookUp เพื่อดูว่าจะไปหน้าไหน\r\n    If(\r\n        LookUp(claimRequest, ID = Value(Param(\"accountId\")), typeRequest.Value) = \"Claim\",\r\n        ViewScreen,        // ถ้าเงื่อนไขจริง ส่งคืนค่าเป็นหน้า ViewScreen\r\n        ReturnViewScreen   // ถ้าเท็จ ส่งคืนค่าเป็นหน้า ReturnViewScreen\r\n    ),\r\n    \r\n    // ถ้าไม่มี Param -> ส่งคืนค่าเป็นหน้า HomeScreen\r\n    HomeScreen\r\n)"
+    StartScreen: "=// เก็บค่า accountId ลงตัวแปร ถ้ามีส่งมา
+      If(
+          !IsBlank(Param("accountId")),
+          DispatcherScreen,
+          HomeScreen
+      );"
     Theme: =PowerAppsTheme
