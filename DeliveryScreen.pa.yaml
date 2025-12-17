@@ -1,0 +1,823 @@
+# ************************************************************************************************
+# Warning: YAML source code for Canvas Apps should only be used to review changes made within Power Apps Studio and for minor edits (Preview).
+# Use the maker portal to create and edit your Power Apps.
+# 
+# The schema file for Canvas Apps is available at https://go.microsoft.com/fwlink/?linkid=2304907
+# 
+# For more information, visit https://go.microsoft.com/fwlink/?linkid=2292623
+# ************************************************************************************************
+Screens:
+  DeliveryScreen:
+    Properties:
+      Height: =1123
+      LoadingSpinnerColor: =RGBA(56, 96, 178, 1)
+      Width: =794
+    Children:
+      - Image1_1:
+          Control: Image@2.2.3
+          Properties:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Height: =87
+            Image: =HeaderDelSTH_1
+            Visible: =If(DataCardValue21.Selected.Value = "STH",true,false)
+            Width: =705
+            X: =44
+            Y: =26
+      - Image3:
+          Control: Image@2.2.3
+          Properties:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Height: =87
+            Image: =HeaderDelSON
+            Visible: =If(DataCardValue21.Selected.Value = "SON",true,false)
+            Width: =705
+            X: =44
+            Y: =26
+      - Icon5:
+          Control: Classic/Icon@2.5.0
+          Properties:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =RGBA(0, 18, 107, 1)
+            Height: =41
+            Icon: =Icon.Print
+            OnSelect: =Print()
+            Visible: =Not DeliveryScreen.Printing
+            Width: =50
+            X: =551
+            Y: =12
+      - Gallery3_1:
+          Control: Gallery@2.15.0
+          Variant: BrowseLayout_Vertical_OneTextVariant_ver4.0
+          Properties:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            DisplayMode: =DisplayMode.Disabled
+            Height: =376
+            Items: =Filter(claimDetail, Title = DataCardValue19_1.Text)
+            TemplateSize: =31
+            Width: =747
+            X: =22
+            Y: =489
+          Children:
+            - Separator1_1:
+                Control: Rectangle@2.3.0
+                Properties:
+                  BorderColor: =RGBA(0, 18, 107, 1)
+                  Fill: =RGBA(0, 18, 107, 1)
+                  Height: =0
+                  OnSelect: =Select(Parent)
+                  Width: =Parent.TemplateWidth
+                  Y: =28
+            - TextInput4_6:
+                Control: Classic/TextInput@2.3.2
+                Properties:
+                  Align: =Align.Center
+                  BorderColor: =RGBA(0, 18, 107, 1)
+                  Default: =ThisItem.brand
+                  DisabledColor: =RGBA(0, 0, 0, 1)
+                  DisabledFill: =RGBA(255, 255, 255, 1)
+                  Font: =Font.'Open Sans'
+                  Height: =31
+                  HoverBorderColor: =RGBA(0, 18, 107, 1)
+                  HoverFill: =RGBA(186, 202, 226, 1)
+                  LineHeight: =1
+                  OnChange: =
+                  OnSelect: =Select(Parent)
+                  RadiusBottomLeft: =0
+                  RadiusBottomRight: =0
+                  RadiusTopLeft: =0
+                  RadiusTopRight: =0
+                  Size: =10
+                  Width: =152
+                  X: =22
+            - TextInput4_7:
+                Control: Classic/TextInput@2.3.2
+                Properties:
+                  Align: =Align.Center
+                  BorderColor: =RGBA(0, 18, 107, 1)
+                  Default: =ThisItem.MPN
+                  DisabledColor: =RGBA(0, 0, 0, 1)
+                  DisabledFill: =RGBA(255, 255, 255, 1)
+                  Font: =Font.'Open Sans'
+                  Height: =31
+                  HoverBorderColor: =RGBA(0, 18, 107, 1)
+                  HoverFill: =RGBA(186, 202, 226, 1)
+                  OnChange: =
+                  OnSelect: =Select(Parent)
+                  RadiusBottomLeft: =0
+                  RadiusBottomRight: =0
+                  RadiusTopLeft: =0
+                  RadiusTopRight: =0
+                  Size: =10
+                  Width: =161
+                  X: =174
+            - TextInput4_8:
+                Control: Classic/TextInput@2.3.2
+                Properties:
+                  Align: =Align.Center
+                  BorderColor: =RGBA(0, 18, 107, 1)
+                  Default: =ThisItem.Description
+                  DisabledColor: =RGBA(0, 0, 0, 1)
+                  DisabledFill: =RGBA(255, 255, 255, 1)
+                  Font: =Font.'Open Sans'
+                  Height: =31
+                  HoverBorderColor: =RGBA(0, 18, 107, 1)
+                  HoverFill: =RGBA(186, 202, 226, 1)
+                  OnChange: =
+                  OnSelect: =Select(Parent)
+                  RadiusBottomLeft: =0
+                  RadiusBottomRight: =0
+                  RadiusTopLeft: =0
+                  RadiusTopRight: =0
+                  Size: =10
+                  Width: =281
+                  X: =335
+            - TextInput4_9:
+                Control: Classic/TextInput@2.3.2
+                Properties:
+                  Align: =Align.Center
+                  BorderColor: =RGBA(0, 18, 107, 1)
+                  Default: =ThisItem.QTY
+                  DisabledColor: =RGBA(0, 0, 0, 1)
+                  DisabledFill: =RGBA(255, 255, 255, 1)
+                  Font: =Font.'Open Sans'
+                  Height: =31
+                  HoverBorderColor: =RGBA(0, 18, 107, 1)
+                  HoverFill: =RGBA(186, 202, 226, 1)
+                  OnChange: =
+                  OnSelect: =Select(Parent)
+                  RadiusBottomLeft: =0
+                  RadiusBottomRight: =0
+                  RadiusTopLeft: =0
+                  RadiusTopRight: =0
+                  Size: =10
+                  Width: =48
+                  X: =616
+            - TextInput4_10:
+                Control: Classic/TextInput@2.3.2
+                Properties:
+                  Align: =Align.Center
+                  BorderColor: =RGBA(0, 18, 107, 1)
+                  Default: =ThisItem.kUnit
+                  DisabledColor: =RGBA(0, 0, 0, 1)
+                  DisabledFill: =RGBA(255, 255, 255, 1)
+                  Font: =Font.'Open Sans'
+                  Height: =31
+                  HoverBorderColor: =RGBA(0, 18, 107, 1)
+                  HoverFill: =RGBA(186, 202, 226, 1)
+                  OnChange: =
+                  OnSelect: =Select(Parent)
+                  RadiusBottomLeft: =0
+                  RadiusBottomRight: =0
+                  RadiusTopLeft: =0
+                  RadiusTopRight: =0
+                  Size: =10
+                  Width: =73
+                  X: =665
+      - Label1_14:
+          Control: Label@2.5.1
+          Properties:
+            Align: =Align.Center
+            BorderColor: =RGBA(166, 166, 166, 1)
+            BorderThickness: =2
+            DisabledBorderColor: =RGBA(0, 0, 0, 0)
+            Fill: =RGBA(204, 204, 204, 1)
+            FocusedBorderColor: =Label1_14.BorderColor
+            FocusedBorderThickness: =4
+            Font: =Font.'Segoe UI'
+            FontWeight: =FontWeight.Semibold
+            Height: =27
+            HoverBorderColor: =Label1_14.BorderColor
+            HoverColor: =Label1_14.Color
+            HoverFill: =Label1_14.Fill
+            PressedBorderColor: =Label1_14.BorderColor
+            PressedColor: =Label1_14.Color
+            PressedFill: =Label1_14.Fill
+            Size: =10
+            Text: ="Brand"
+            Width: =152
+            X: =44
+            Y: =462
+      - Label1_9:
+          Control: Label@2.5.1
+          Properties:
+            Align: =Align.Center
+            BorderColor: =RGBA(166, 166, 166, 1)
+            BorderThickness: =2
+            DisabledBorderColor: =RGBA(0, 0, 0, 0)
+            Fill: =RGBA(204, 204, 204, 1)
+            FocusedBorderColor: =Label1_9.BorderColor
+            FocusedBorderThickness: =4
+            Font: =Font.'Segoe UI'
+            FontWeight: =FontWeight.Semibold
+            Height: =27
+            HoverBorderColor: =Label1_9.BorderColor
+            HoverColor: =Label1_9.Color
+            HoverFill: =Label1_9.Fill
+            PressedBorderColor: =Label1_9.BorderColor
+            PressedColor: =Label1_9.Color
+            PressedFill: =Label1_9.Fill
+            Size: =10
+            Text: ="MPN"
+            Width: =171
+            X: =196
+            Y: =462
+      - Label1_10:
+          Control: Label@2.5.1
+          Properties:
+            Align: =Align.Center
+            BorderColor: =RGBA(166, 166, 166, 1)
+            BorderThickness: =2
+            DisabledBorderColor: =RGBA(0, 0, 0, 0)
+            Fill: =RGBA(204, 204, 204, 1)
+            FocusedBorderColor: =Label1_10.BorderColor
+            FocusedBorderThickness: =4
+            Font: =Font.'Segoe UI'
+            FontWeight: =FontWeight.Semibold
+            Height: =27
+            HoverBorderColor: =Label1_10.BorderColor
+            HoverColor: =Label1_10.Color
+            HoverFill: =Label1_10.Fill
+            PressedBorderColor: =Label1_10.BorderColor
+            PressedColor: =Label1_10.Color
+            PressedFill: =Label1_10.Fill
+            Size: =10
+            Text: ="Description"
+            Width: =281
+            X: =357
+            Y: =462
+      - Label1_11:
+          Control: Label@2.5.1
+          Properties:
+            Align: =Align.Center
+            BorderColor: =RGBA(166, 166, 166, 1)
+            BorderThickness: =2
+            DisabledBorderColor: =RGBA(0, 0, 0, 0)
+            Fill: =RGBA(204, 204, 204, 1)
+            FocusedBorderColor: =Label1_11.BorderColor
+            FocusedBorderThickness: =4
+            Font: =Font.'Segoe UI'
+            FontWeight: =FontWeight.Semibold
+            Height: =27
+            HoverBorderColor: =Label1_11.BorderColor
+            HoverColor: =Label1_11.Color
+            HoverFill: =Label1_11.Fill
+            PressedBorderColor: =Label1_11.BorderColor
+            PressedColor: =Label1_11.Color
+            PressedFill: =Label1_11.Fill
+            Size: =10
+            Text: ="QTY"
+            Width: =49
+            X: =638
+            Y: =462
+      - Label1_12:
+          Control: Label@2.5.1
+          Properties:
+            Align: =Align.Center
+            BorderColor: =RGBA(166, 166, 166, 1)
+            BorderThickness: =2
+            DisabledBorderColor: =RGBA(0, 0, 0, 0)
+            Fill: =RGBA(204, 204, 204, 1)
+            FocusedBorderColor: =Label1_12.BorderColor
+            FocusedBorderThickness: =4
+            Font: =Font.'Segoe UI'
+            FontWeight: =FontWeight.Semibold
+            Height: =27
+            HoverBorderColor: =Label1_12.BorderColor
+            HoverColor: =Label1_12.Color
+            HoverFill: =Label1_12.Fill
+            PressedBorderColor: =Label1_12.BorderColor
+            PressedColor: =Label1_12.Color
+            PressedFill: =Label1_12.Fill
+            Size: =10
+            Text: ="Unit"
+            Width: =73
+            X: =687
+            Y: =462
+      - Label6_6:
+          Control: Label@2.5.1
+          Properties:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Font: =Font.'Open Sans'
+            FontWeight: =FontWeight.Bold
+            Height: =37
+            PaddingBottom: =10
+            Text: |+
+              ="Delivered By"
+
+
+
+
+
+            Width: =119
+            X: =76
+            Y: =960
+      - Label6_7:
+          Control: Label@2.5.1
+          Properties:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Font: =Font.'Open Sans'
+            FontWeight: =FontWeight.Bold
+            Height: =37
+            PaddingBottom: =10
+            Text: ="Recevied By"
+            Width: =123
+            X: =478
+            Y: =962
+      - Button5:
+          Control: Classic/Button@2.2.0
+          Properties:
+            BorderColor: =ColorFade(Self.Fill, -15%)
+            Color: =RGBA(255, 255, 255, 1)
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            Fill: =RGBA(56, 96, 178, 1)
+            Font: =Font.'Open Sans'
+            HoverBorderColor: =ColorFade(Self.BorderColor, 20%)
+            HoverColor: =RGBA(255, 255, 255, 1)
+            HoverFill: =ColorFade(RGBA(56, 96, 178, 1), -20%)
+            OnSelect: =Back();
+            PressedBorderColor: =Self.Fill
+            PressedColor: =Self.Fill
+            PressedFill: =Self.Color
+            Text: ="Back"
+            Visible: =Not DeliveryScreen.Printing
+            X: =622
+            Y: =12
+      - Label6_10:
+          Control: Label@2.5.1
+          Properties:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Font: =Font.'Open Sans'
+            FontWeight: =FontWeight.Bold
+            Height: =36
+            PaddingBottom: =0
+            Text: |+
+              ="-------------------------"
+
+
+
+
+
+            Width: =183
+            X: =195
+            Y: =962
+      - Label6_11:
+          Control: Label@2.5.1
+          Properties:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Font: =Font.'Open Sans'
+            FontWeight: =FontWeight.Bold
+            Height: =36
+            PaddingBottom: =0
+            Text: |+
+              ="-------------------------"
+
+
+
+
+
+            Width: =178
+            X: =606
+            Y: =961
+      - Label6_14:
+          Control: Label@2.5.1
+          Properties:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Font: =Font.'Open Sans'
+            FontWeight: =FontWeight.Bold
+            Height: =38
+            PaddingBottom: =10
+            Size: =10
+            Text: |+
+              ="Date"
+
+
+
+
+
+            Width: =53
+            X: =76
+            Y: =994
+      - Label6_16:
+          Control: Label@2.5.1
+          Properties:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Font: =Font.'Open Sans'
+            FontWeight: =FontWeight.Bold
+            Height: =38
+            PaddingBottom: =10
+            Size: =10
+            Text: |+
+              ="Date"
+
+
+
+
+
+            Width: =53
+            X: =478
+            Y: =994
+      - Label6_13:
+          Control: Label@2.5.1
+          Properties:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Font: =Font.'Open Sans'
+            FontWeight: =FontWeight.Bold
+            Height: =35
+            PaddingBottom: =10
+            Text: |+
+              ="Logistic Comment: "
+
+
+
+
+
+            Width: =184
+            X: =76
+            Y: =890
+      - Label6_15:
+          Control: Label@2.5.1
+          Properties:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Font: =Font.'Open Sans'
+            FontWeight: =FontWeight.Bold
+            Height: =70
+            PaddingBottom: =10
+            Text: |+
+              =DataCardValue54.Text
+
+
+
+
+
+            VerticalAlign: =VerticalAlign.Top
+            Width: =413
+            X: =240
+            Y: =890
+      - Label10_53:
+          Control: Label@2.5.1
+          Group: Group4_1
+          Properties:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            BorderThickness: =1
+            Font: =Font.'Open Sans'
+            Height: =83
+            LineHeight: =2
+            PaddingTop: =0
+            Size: =9
+            Text: =DataCardValue3_1.Text
+            Width: =438
+            X: =168
+            Y: =160
+      - Label10_46:
+          Control: Label@2.5.1
+          Group: Group4_1
+          Properties:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            BorderThickness: =1
+            Font: =Font.'Open Sans'
+            FontWeight: =FontWeight.Bold
+            Height: =31
+            Size: =10
+            Text: |-
+              ="Customer Code: "
+            Width: =124
+            X: =44
+            Y: =129
+      - Label10_47:
+          Control: Label@2.5.1
+          Group: Group4_1
+          Properties:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            BorderThickness: =1
+            Font: =Font.'Open Sans'
+            Height: =31
+            Size: =10
+            Text: =DataCardValue2_1.Text
+            Width: =92
+            X: =168
+            Y: =129
+      - Label10_48:
+          Control: Label@2.5.1
+          Group: Group4_1
+          Properties:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            BorderThickness: =1
+            Font: =Font.'Open Sans'
+            FontWeight: =FontWeight.Bold
+            Height: =31
+            Size: =10
+            Text: |-
+              ="Customer Name: "
+            Width: =124
+            X: =260
+            Y: =129
+      - Label10_49:
+          Control: Label@2.5.1
+          Group: Group4_1
+          Properties:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            BorderThickness: =1
+            Font: =Font.'Open Sans'
+            Height: =31
+            Size: =9
+            Text: =DataCardValue1_1.Text
+            Width: =222
+            X: =384
+            Y: =129
+      - Label10_52:
+          Control: Label@2.5.1
+          Group: Group4_1
+          Properties:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            BorderThickness: =1
+            Font: =Font.'Open Sans'
+            FontWeight: =FontWeight.Bold
+            Height: =83
+            PaddingRight: =0
+            Size: =10
+            Text: |-
+              ="Address: "
+            Width: =124
+            X: =44
+            Y: =160
+      - Label10_56:
+          Control: Label@2.5.1
+          Group: Group4_1
+          Properties:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            BorderThickness: =1
+            Font: =Font.'Open Sans'
+            FontWeight: =FontWeight.Bold
+            Height: =128
+            Size: =10
+            Text: |-
+              ="Reason: "
+            Width: =124
+            X: =44
+            Y: =243
+      - Label10_57:
+          Control: Label@2.5.1
+          Group: Group4_1
+          Properties:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            BorderThickness: =1
+            Font: =Font.'Open Sans'
+            Height: =128
+            Size: =8
+            Text: =DataCardValue9_1.Text
+            Width: =438
+            X: =168
+            Y: =243
+      - Label10_54:
+          Control: Label@2.5.1
+          Group: Group4_1
+          Properties:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            BorderThickness: =1
+            Font: =Font.'Open Sans'
+            FontWeight: =FontWeight.Bold
+            Height: =83
+            Size: =10
+            Text: |-
+              ="Tel : "
+            Width: =71
+            X: =606
+            Y: =160
+      - Label10_55:
+          Control: Label@2.5.1
+          Group: Group4_1
+          Properties:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            BorderThickness: =1
+            Font: =Font.'Open Sans'
+            Height: =83
+            Size: =9
+            Text: =DataCardValue35.Text
+            Width: =83
+            X: =677
+            Y: =160
+      - Label10_68:
+          Control: Label@2.5.1
+          Group: Group4_1
+          Properties:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            BorderThickness: =1
+            Font: =Font.'Open Sans'
+            FontWeight: =FontWeight.Bold
+            Height: =31
+            Size: =10
+            Text: |-
+              ="Sales Person : "
+            Width: =114
+            X: =337
+            Y: =402
+      - Label10_69:
+          Control: Label@2.5.1
+          Group: Group4_1
+          Properties:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            BorderThickness: =1
+            Font: =Font.'Open Sans'
+            Height: =31
+            Size: =9
+            Text: =DataCardValue5_1.Text
+            Width: =112
+            X: =451
+            Y: =402
+      - Label10_50:
+          Control: Label@2.5.1
+          Group: Group4_1
+          Properties:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            BorderThickness: =1
+            Font: =Font.'Open Sans'
+            FontWeight: =FontWeight.Bold
+            Height: =31
+            PaddingRight: =0
+            Size: =10
+            Text: ="Claim No "
+            Width: =71
+            X: =606
+            Y: =129
+      - Label10_51:
+          Control: Label@2.5.1
+          Group: Group4_1
+          Properties:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            BorderThickness: =1
+            Font: =Font.'Open Sans'
+            Height: =31
+            Size: =10
+            Text: =DataCardValue7_1.Text
+            Width: =83
+            X: =677
+            Y: =129
+      - Label10_58:
+          Control: Label@2.5.1
+          Group: Group4_1
+          Properties:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            BorderThickness: =1
+            Font: =Font.'Open Sans'
+            FontWeight: =FontWeight.Bold
+            Height: =128
+            Size: =10
+            Text: |-
+              ="Date: "
+            Width: =71
+            X: =606
+            Y: =243
+      - Label10_59:
+          Control: Label@2.5.1
+          Group: Group4_1
+          Properties:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            BorderThickness: =1
+            Font: =Font.'Open Sans'
+            Height: =128
+            Size: =10
+            Text: =Text(DateTimeValue(DataCardValue14_1.SelectedDate),"dd/mm/yyyy")
+            Width: =83
+            X: =677
+            Y: =243
+      - Label10_70:
+          Control: Label@2.5.1
+          Group: Group4_1
+          Properties:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            BorderThickness: =1
+            Font: =Font.'Open Sans'
+            FontWeight: =FontWeight.Bold
+            Height: =31
+            Size: =10
+            Text: |-
+              ="Invoice: "
+            Width: =81
+            X: =563
+            Y: =402
+      - Label10_71:
+          Control: Label@2.5.1
+          Group: Group4_1
+          Properties:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            BorderThickness: =1
+            Font: =Font.'Open Sans'
+            Height: =31
+            Size: =10
+            Text: =DataCardValue8_1.Text
+            Width: =116
+            X: =644
+            Y: =402
+      - Label10_66:
+          Control: Label@2.5.1
+          Group: Group4_1
+          Properties:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            BorderThickness: =1
+            Font: =Font.'Open Sans'
+            FontWeight: =FontWeight.Bold
+            Height: =31
+            Size: =10
+            Text: |-
+              ="Create by: "
+            Width: =124
+            X: =44
+            Y: =402
+      - Label10_67:
+          Control: Label@2.5.1
+          Group: Group4_1
+          Properties:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            BorderThickness: =1
+            Font: =Font.'Open Sans'
+            Height: =31
+            Size: =9
+            Text: =TextInput1_1.Text
+            Width: =169
+            X: =168
+            Y: =402
+      - Label10_60:
+          Control: Label@2.5.1
+          Group: Group4_1
+          Properties:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            BorderThickness: =1
+            Font: =Font.'Open Sans'
+            FontWeight: =FontWeight.Bold
+            Height: =31
+            Size: =10
+            Text: |-
+              ="Claim Type : "
+            Width: =124
+            X: =44
+            Y: =371
+      - Label10_61:
+          Control: Label@2.5.1
+          Group: Group4_1
+          Properties:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            BorderThickness: =1
+            Font: =Font.'Open Sans'
+            Height: =31
+            Size: =10
+            Text: =DataCardValue6_1.Selected.Value
+            Width: =169
+            X: =168
+            Y: =371
+      - Label10_62:
+          Control: Label@2.5.1
+          Group: Group4_1
+          Properties:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            BorderThickness: =1
+            Font: =Font.'Open Sans'
+            FontWeight: =FontWeight.Bold
+            Height: =31
+            PaddingRight: =0
+            Size: =10
+            Text: ="Contact Person  "
+            Width: =114
+            X: =337
+            Y: =371
+      - Label10_63:
+          Control: Label@2.5.1
+          Group: Group4_1
+          Properties:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            BorderThickness: =1
+            Font: =Font.'Open Sans'
+            Height: =31
+            Size: =10
+            Text: =DataCardValue4_1.Text
+            Width: =112
+            X: =451
+            Y: =371
+      - Label10_64:
+          Control: Label@2.5.1
+          Group: Group4_1
+          Properties:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            BorderThickness: =1
+            Font: =Font.'Open Sans'
+            FontWeight: =FontWeight.Bold
+            Height: =31
+            PaddingRight: =0
+            Size: =10
+            Text: |-
+              ="Location:  "
+            Width: =81
+            X: =563
+            Y: =371
+      - Label10_65:
+          Control: Label@2.5.1
+          Group: Group4_1
+          Properties:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            BorderThickness: =1
+            Font: =Font.'Open Sans'
+            Height: =31
+            Size: =10
+            Text: =DataCardValue10_1.Selected.Value
+            Width: =116
+            X: =644
+            Y: =371
